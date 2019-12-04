@@ -17,6 +17,7 @@ this.keyword = keyword;
 // `);
 
 Horns.prototype.renderWithJquery = function(){
+
 $('#photo-template').append(`
 <div>
 <h2>${this.title}</h2>
@@ -32,23 +33,33 @@ $('#photo-template').append(`
 };
 
 
-let hornTest = new Horns('Title 1', 'https://vignette.wikia.nocookie.net/garfield/images/a/ac/OdieCharacter.jpg/revision/latest?cb=20161218045212', 'this is descritpion', 1 );
 
-hornTest.renderWithJquery();
+$("#selector").change(function(){
+   
+
+   $('#photo-template').empty();
+    var id = $(this).find("option:selected").attr("id");
+  console.log(id);
+
 
 
 $.get('data/page-1.json').then(
     (data) => {
-        //var captured = ;
-      console.log(data);
+     
+     // console.log(data);
       data.forEach(hornObjFromFile => {
         let horn = new Horns(hornObjFromFile.title, hornObjFromFile.image_url,hornObjFromFile.description,hornObjFromFile.horns, hornObjFromFile.keyword);
-       
-       //  if(captured = this.keyword = )
+       console.log(id);
+       //console.log(horn);
+       console.log(horn.keyword);
+      
+        if(id === horn.keyword){
      
         
         horn.renderWithJquery();
+        }
+       
       });
     });
   
-
+});
