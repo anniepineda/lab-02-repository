@@ -8,14 +8,6 @@ this.keyword = keyword;
 }
 
 
-// let main = $('main');
-// console.log(main);
-
-// main.append(`
-// <h2>Hello class</h2>
-// <p>today rocks</p>
-// `);
-
 Horns.prototype.renderWithJquery = function(){
 
 $('#photo-template').append(`
