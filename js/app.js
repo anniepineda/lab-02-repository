@@ -8,10 +8,6 @@ this.keyword = keyword;
 }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e8ee46cdcff1bf9dc4fef7ca105ee6d7a2bd3f1
 Horns.prototype.renderWithJquery = function(){
 
 $('#photo-template').append(`
