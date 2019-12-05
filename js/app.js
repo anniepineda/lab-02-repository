@@ -30,6 +30,7 @@ $("button").click(function(){
   $('#selector2').show();
   $('button').hide();
   $('#two').show();
+  
   $('#photo-template').empty();
 
 }); 
@@ -58,22 +59,48 @@ $.get('data/page-1.json').then(
      // console.log(data);
       data.forEach(hornObjFromFile => {
         let horn = new Horns(hornObjFromFile.title, hornObjFromFile.image_url,hornObjFromFile.description,hornObjFromFile.horns, hornObjFromFile.keyword);
-       console.log(id);
+       //console.log(id);
        //console.log(horn);
-       console.log(horn.keyword);
+       //console.log(horn.keyword);
       
-        if(id === horn.keyword){
-     
-        horn.renderWithJquery();
-        }
-       
+       if(id === horn.keyword){
+         
+        console.log('-----', arr)
+       arr.push(horn);
+       console.log(horn);
+      horn.renderWithJquery();
+      }
+
       });
     });
   
 });
 
 
+function callBack(a,b){
+  if(a.title>b.title){
+      return 1;
+  }
+  else{
+      return -1;
+  }
+}
 
+
+$("#three").click(function(){
+  $('#photo-template').empty();
+  console.log(arr);
+ arr.sort(callBack);
+
+
+ for(let i = 0; i < arr.length; i++){
+   arr[i].renderWithJquery();
+ }
+  
+}); 
+
+
+var arr = [];
 
 $("#selector2").change(function(){
    
@@ -84,20 +111,33 @@ $("#selector2").change(function(){
 
 $.get('data/page-2.json').then(
    (data) => {
-    
+   
+  
+
     // console.log(data);
      data.forEach(hornObjFromFile => {
        let horn = new Horns(hornObjFromFile.title, hornObjFromFile.image_url,hornObjFromFile.description,hornObjFromFile.horns, hornObjFromFile.keyword);
-      console.log(id);
+      //console.log(id);
       //console.log(horn);
-      console.log(horn.keyword);
-     
+      //console.log(horn.keyword);
+   
+console.log(id, horn.keyword);
        if(id === horn.keyword){
-    
+         
+         console.log('-----', arr)
+        arr.push(horn);
+        console.log(horn);
        horn.renderWithJquery();
        }
+
+    
+      
       
      });
+
+     
+
    });
  
 });
+
