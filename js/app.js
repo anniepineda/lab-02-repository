@@ -1,3 +1,6 @@
+// 'use strict';
+
+
 function Horns(title, image_url , description, horns, keyword){
 this.title = title;
 this.image_url = image_url;
@@ -56,7 +59,7 @@ $("#selector").change(function(){
   $('#three').show();
 
     var id = $(this).find("option:selected").attr("id");
-  console.log(id);
+  // console.log(id);
 
 
 $.get('data/page-1.json').then(
@@ -65,15 +68,12 @@ $.get('data/page-1.json').then(
      // console.log(data);
       data.forEach(hornObjFromFile => {
         let horn = new Horns(hornObjFromFile.title, hornObjFromFile.image_url,hornObjFromFile.description,hornObjFromFile.horns, hornObjFromFile.keyword);
-       //console.log(id);
-       //console.log(horn);
-       //console.log(horn.keyword);
       
        if(id === horn.keyword){
          
-        console.log('-----', arr)
+        // console.log('-----', arr)
        arr.push(horn);
-       console.log(horn);
+      //  console.log(horn);
       horn.renderWithJquery();
       }
 
@@ -93,7 +93,7 @@ function callBack(a,b){
 
 $("#three").click(function(){
   $('#photo-template').empty();
-  console.log(arr);
+  // console.log(arr);
  arr.sort(callBack);
 
 
@@ -129,9 +129,9 @@ $.get('data/page-2.json').then(
 console.log(id, horn.keyword);
        if(id === horn.keyword){
          
-         console.log('-----', arr)
+        //  console.log('-----', arr)
         arr.push(horn);
-        console.log(horn);
+        // console.log(horn);
        horn.renderWithJquery();
        }
 
